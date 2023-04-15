@@ -53,13 +53,12 @@ def authorization():
     )
     sleep(3)
     pwd_next.click()
-
-
+    sleep(3)
 
 def get_post():
     "Скриншоты постов."
 
-    driver.get(URL + "")
+    driver.get(URL + CHANEL)
     sleep(300)
 
 
