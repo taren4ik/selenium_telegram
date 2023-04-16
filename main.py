@@ -5,21 +5,23 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from dotenv import load_dotenv
 
-
 URL = "https://web.telegram.org/k/"
-CHANEL = "#@ERAanarchy"
+CHANEL = "t.me/ERAanarchy/"
 
-
+posts = (
+    606,
+    607,
+    610
+)
 
 load_dotenv()
-
 
 PHONE = os.getenv('PHONE')
 PASSWORD = os.getenv('PASSWORD')
 
+
 def authorization():
-    "Прохождение авторизации."
-    driver.find_element
+    """Прохождение авторизации."""
     button = driver.find_element(
         by=By.XPATH,
         value="/html/body/div[1]/div/div[2]/div[3]/div/div[2]/button[1]/div"
@@ -55,11 +57,13 @@ def authorization():
     pwd_next.click()
     sleep(3)
 
-def get_post():
-    "Скриншоты постов."
 
-    driver.get(URL + CHANEL)
-    sleep(300)
+def get_screenshot():
+    "Скриншоты постов."
+    for post in posts:
+        driver.get(CHANEL + str(post) + '/')
+        sleep(5)
+        driver.save_screenshot(f'screenshot_+{post}.png')
 
 
 if __name__ == '__main__':
