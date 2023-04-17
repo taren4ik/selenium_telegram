@@ -1,8 +1,8 @@
 import os
 from time import sleep
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium import webdriver
 from dotenv import load_dotenv
 
 URL = "https://web.telegram.org/k/"
@@ -69,6 +69,11 @@ def get_screenshot():
 if __name__ == '__main__':
     mobile = {'deviceName': 'iPhone 6 Plus'}
     chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--allow-profiles-outside-user-dir')
+    chrome_options.add_argument('--enable-profile-shortcut-manager')
+    chrome_options.add_argument(
+        r'user-data-dir=D:\developer\selenium_telegram')
+    chrome_options.add_argument('--profile-directory=Profile 1')
     # chrome_options.add_experimental_option('mobileEmulation', mobile)
     driver = webdriver.Chrome(
         options=chrome_options
@@ -76,5 +81,5 @@ if __name__ == '__main__':
     driver.get(URL)
     driver.implicitly_wait(20)
     authorization()
-    get_post()
+    get_screenshot()
     driver.quit()
